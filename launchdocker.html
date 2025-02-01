@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第2章: テスト環境を構築する - Dockerコンテナの起動</title>
+</head>
+<body>
+    <header>
+        <h1>第2章: テスト環境を構築する</h1>
+        <h2>2.1: Dockerコンテナの起動</h2>
+    </header>
+    <section>
+        <p>まず、テスト用のDockerコンテナを起動します。このコンテナ上でAnsibleを使用して操作します。</p>
+        <h3>コンテナの作成と実行</h3>
+        <pre><code>
+$ docker run -d --name test-container centos:latest
+$ docker exec -it test-container bash
+        </code></pre>
+        <p>これで、`test-container`という名前のコンテナが起動し、その中にアクセスすることができます。</p>
+    </section>
+</body>
+</html>

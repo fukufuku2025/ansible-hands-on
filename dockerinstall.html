@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1章: 環境構築 - Dockerのインストール</title>
+</head>
+<body>
+    <header>
+        <h1>第1章: 環境構築</h1>
+        <h2>1.1: Dockerのインストール</h2>
+    </header>
+    <section>
+        <p>Dockerのインストール手順を学びます。Dockerは、コンテナ型の仮想化技術を提供します。まずは公式ドキュメントに従ってインストールしましょう。</p>
+        <h3>インストール手順</h3>
+        <pre><code>
+$ sudo apt update
+$ sudo apt install docker.io
+$ sudo systemctl enable docker
+$ sudo systemctl start docker
+$ docker --version
+        </code></pre>
+        <p>インストール後、`docker`コマンドが使用できるか確認します。</p>
+    </section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第4章: Playbookを作成する - Playbookの作成と実行</title>
+</head>
+<body>
+    <header>
+        <h1>第4章: Playbookを作成する</h1>
+        <h2>4.1: Playbookの作成と実行</h2>
+    </header>
+    <section>
+        <p>プレイブックを使って、Ansibleで実行するタスクを記述します。この例では、`httpd`をインストールするタスクを作成します。</p>
+        <h3>Playbookの作成</h3>
+        <pre><code>
+---
+- name: Install and start httpd
+  hosts: test
+  become: true
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+    - name: Start httpd
+      service:
+        name: httpd
+        state: started
+        </code></pre>
+        <p>このPlaybookは、`test`ホスト（Dockerコンテナ）に対して`httpd`をインストールし、サービスを開始するタスクを実行します。</p>
+        <h3>実行方法</h3>
+        <pre><code>
+$ ansible-playbook playbook.yml
+        </code></pre>
+    </section>
+</body>
+</html>

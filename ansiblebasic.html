@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第3章: Ansibleの基本構成 - Inventoryファイル（`inventory.ini`）</title>
+</head>
+<body>
+    <header>
+        <h1>第3章: Ansibleの基本構成</h1>
+        <h2>3.1: Inventoryファイル（`inventory.ini`）</h2>
+    </header>
+    <section>
+        <p>Ansibleで管理するホストを指定するためのファイルを作成します。`inventory.ini`は、ホストの情報を記述するために使います。</p>
+        <h3>Inventoryファイルの作成</h3>
+        <pre><code>
+[test]
+127.0.0.1 ansible_connection=docker
+        </code></pre>
+        <p>このファイルにより、AnsibleがDockerコンテナに接続できるようになります。</p>
+    </section>
+</body>
+</html>
