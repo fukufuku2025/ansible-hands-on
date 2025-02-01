@@ -99,12 +99,34 @@
     </header>
     <section>
         <p>Ansibleで管理するホストを指定するためのファイルを作成します。`inventory.ini`は、ホストの情報を記述するために使います。</p>
+
         <h3>Inventoryファイルの作成</h3>
         <pre><code>
 [test]
 127.0.0.1 ansible_connection=docker
         </code></pre>
         <p>このファイルにより、AnsibleがDockerコンテナに接続できるようになります。</p>
+
+        <h3>ディレクトリ構成</h3>
+        <p>以下のような構成でファイルを配置します。</p>
+        <pre><code>
+ansible_project/
+├── ansible.cfg
+├── inventory.ini
+├── playbook.yml
+└── roles/
+    └── httpd/
+        └── tasks/
+            └── main.yml
+        </code></pre>
+
+        <h3>各ファイルの役割</h3>
+        <ul>
+            <li><strong>ansible.cfg</strong> - Ansibleの設定ファイル</li>
+            <li><strong>inventory.ini</strong> - 管理対象ホストのリスト</li>
+            <li><strong>playbook.yml</strong> - 自動化タスクを定義</li>
+            <li><strong>roles/httpd/tasks/main.yml</strong> - HTTPD（Apache）をインストール・設定するタスク</li>
+        </ul>
     </section>
 </body>
 </html>
