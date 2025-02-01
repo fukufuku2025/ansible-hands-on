@@ -102,8 +102,10 @@
 
         <h3>Inventoryファイルの作成</h3>
         <pre><code>
-[test]
-127.0.0.1 ansible_connection=docker
+[web_servers]
+web1 ansible_host=192.168.1.33
+web2 ansible_host=192.168.1.34
+
         </code></pre>
         <p>このファイルにより、AnsibleがDockerコンテナに接続できるようになります。</p>
 
