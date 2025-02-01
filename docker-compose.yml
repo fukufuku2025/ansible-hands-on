@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Ansibleコンテナ
+  ansible:
+    image: williamyeh/ansible:alpine3
+    container_name: ansible
+    networks:
+      - ansible_network
+    volumes:
+      - ./ansible:/ansible
+    entrypoint: /bin/sh -c "while true; do sleep 1000; done"  # コンテナを実行状態で維持する
+    # 任意のユーザー名とホスト名を指定
+    environment:
+      - ANSIBLE_HOST_KEY_CHECKING=False  # SSHホストキーの確認を無効化
+
+  # svx01コンテナ
+  svx01:
+    image: ubuntu:latest
+    container_name: svx01
+    networks:
+      - ansible_network
+    command: /bin/bash -c "while true; do sleep 1000; done"  # 永続的にコンテナを実行状態にする
+    volumes:
+      - ./svx01:/root  # 任意でデータの永続化や共有を行う
+    tty: true
+    stdin_open: true  # インタラクティブシェルを有効にする
+
+  # svx02コンテナ
+  svx02:
+    image: ubuntu:latest
+    container_name: svx02
+    networks:
+      - ansible_network
+    command: /bin/bash -c "while true; do sleep 1000; done"  # 永続的にコンテナを実行状態にする
+    volumes:
+      - ./svx02:/root  # 任意でデータの永続化や共有を行う
+    tty: true
+    stdin_open: true  # インタラクティブシェルを有効にする
+
+networks:
+  ansible_network:
+    driver: bridge
