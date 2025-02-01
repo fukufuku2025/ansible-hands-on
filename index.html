@@ -3,10 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
+    <title>Ansible ハンズオン デモ - 目次</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>こんにちは、GitHub Pages!</h1>
-    <p>これはGitHub Pagesを使って公開したウェブサイトです。</p>
+    <header>
+        <h1>Ansible ハンズオン デモ</h1>
+        <h2>目次</h2>
+    </header>
+    <section>
+        <p>以下のリンクから各章にアクセスできます。順番に進めていきましょう！</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>章</th>
+                    <th>タイトル</th>
+                    <th>リンク</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>第1章</td>
+                    <td>環境構築</td>
+                    <td><a href="dockerinstall.html">Dockerのインストール</a></td>
+                </tr>
+                <tr>
+                    <td>第2章</td>
+                    <td>テスト環境を構築する</td>
+                    <td><a href="launchdocker.html">Dockerコンテナの起動</a></td>
+                </tr>
+                <tr>
+                    <td>第3章</td>
+                    <td>Ansibleの基本構成</td>
+                    <td><a href="ansiblebasic.html">Inventoryファイル（`inventory.ini`）</a></td>
+                </tr>
+                <tr>
+                    <td>第4章</td>
+                    <td>Playbookを作成する</td>
+                    <td><a href="playbook.html">Playbookの作成と実行</a></td>
+                </tr>
+                <tr>
+                    <td>第5章</td>
+                    <td>Roleの作成</td>
+                    <td><a href="role.html">Roleのディレクトリ構造</a></td>
+                </tr>
+                <tr>
+                    <td>第6章</td>
+                    <td>Roleの実行</td>
+                    <td><a href="executerole.html">`httpd`のRoleを作成し、実行確認</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>
