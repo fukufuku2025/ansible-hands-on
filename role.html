@@ -100,13 +100,7 @@
     <section>
         <p>Roleを使ってタスクを整理し、再利用可能な構造にします。まず、`httpd`を管理するRoleを作成します。</p>
 
-        <h3>Roleの作成（Ansible Galaxyを使用）</h3>
-        <pre><code>
-$ ansible-galaxy init httpd
-        </code></pre>
-        <p>これで、`httpd`というRoleが作成され、ディレクトリ構造が生成されます。</p>
-
-        <h3>Linuxコマンドで手動作成</h3>
+        <h3>LinuxコマンドでRoleのディレクトリを作成</h3>
         <p>手動でRoleのディレクトリ構造を作成する場合、以下のコマンドを実行します。</p>
         <pre><code>
 $ mkdir -p roles/httpd/{tasks,handlers,templates,files,vars,defaults,meta}
@@ -135,7 +129,22 @@ roles/
     ├── meta/
     │   └── main.yml
         </code></pre>
-        <p>このようなディレクトリ構造を作ることで、AnsibleのRoleとして管理しやすくなります。</p>
+
+        <h3>roles/httpd/tasks/main.yml の内容</h3>
+        <p>作成した `main.yml` に、Apache（httpd）のインストールと起動のタスクを記述します。</p>
+        <pre><code>
+- name: Install Apache
+  ansible.builtin.package:
+    name: httpd
+    state: present
+
+- name: Start and enable Apache
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: yes
+        </code></pre>
+        <p>これにより、Apacheがインストールされ、サービスが起動して有効化されます。</p>
     </section>
 </body>
 </html>
