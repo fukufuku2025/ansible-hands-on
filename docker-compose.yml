@@ -15,26 +15,26 @@ services:
       - ANSIBLE_HOST_KEY_CHECKING=False  # SSHホストキーの確認を無効化
 
   # svx01コンテナ
-  svx01:
-    image: ubuntu:latest
-    container_name: svx01
+  web01:
+    image: alpine:latest
+    container_name: web01
     networks:
       - ansible_network
     command: /bin/bash -c "while true; do sleep 1000; done"  # 永続的にコンテナを実行状態にする
     volumes:
-      - ./svx01:/root  # 任意でデータの永続化や共有を行う
+      - ./web01:/root  # 任意でデータの永続化や共有を行う
     tty: true
     stdin_open: true  # インタラクティブシェルを有効にする
 
   # svx02コンテナ
-  svx02:
-    image: ubuntu:latest
-    container_name: svx02
+  web02:
+    image: alpine:latest
+    container_name: web02
     networks:
       - ansible_network
     command: /bin/bash -c "while true; do sleep 1000; done"  # 永続的にコンテナを実行状態にする
     volumes:
-      - ./svx02:/root  # 任意でデータの永続化や共有を行う
+      - ./web02:/root  # 任意でデータの永続化や共有を行う
     tty: true
     stdin_open: true  # インタラクティブシェルを有効にする
 
