@@ -8,7 +8,7 @@ services:
     networks:
       - ansible_network
     volumes:
-      - ./ansible:/ansible
+      - ./ansible_project:/ansible_project
     entrypoint: /bin/sh -c "while true; do sleep 1000; done"  # コンテナを実行状態で維持する
     # 任意のユーザー名とホスト名を指定
     environment:
