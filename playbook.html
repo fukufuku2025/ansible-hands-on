@@ -109,11 +109,11 @@
         <p>プレイブックを使って、Ansibleで実行するタスクを記述します。この例では、`httpd`をインストールするタスクをroleで定義したのでそれを呼ぶように記載します。</p>
         <h3>Playbookの作成</h3>
         <pre><code>
-            - name: Deploy Apache Server
-            hosts: all
-            become: yes
-            roles:
-              - httpd
+- name: Deploy Apache Server
+ hosts: all
+become: yes
+roles:
+　 - httpd
           
         </code></pre>
         <p>このPlaybookは、`test`ホスト（Dockerコンテナ）に対して`httpd`をインストールし、サービスを開始するタスクを実行します。</p>
