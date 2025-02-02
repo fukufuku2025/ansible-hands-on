@@ -98,17 +98,6 @@
         <h2>5.2: `httpd`のRoleを作成し、実行確認</h2>
     </header>
     <section>
-        <p>作成したRoleを使って、プレイブック内でタスクを実行します。以下のように`httpd`のRoleを呼び出します。</p>
-        <h3>Roleを呼び出すPlaybook</h3>
-        <pre><code>
----
-- name: Install and start httpd using role
-  hosts: test
-  become: true
-  roles:
-    - httpd
-        </code></pre>
-        <p>このPlaybookを実行することで、`httpd`がインストールされ、サービスが起動します。</p>
         <h3>実行方法</h3>
         <pre><code>
 $ ansible-playbook playbook.yml
