@@ -110,8 +110,8 @@
         <p>まず、テスト用のDockerコンテナを起動します。このコンテナ上でAnsibleを使用して操作します。</p>
         <h3>コンテナの作成と実行</h3>
         <pre><code>
-$ docker run -d --name test-container centos:latest
-$ docker exec -it test-container bash
+$ docker compose up -d
+$ docker exec -it ansible bash
         </code></pre>
         <p>これで、`test-container`という名前のコンテナが起動し、その中にアクセスすることができます。</p>
     </section>

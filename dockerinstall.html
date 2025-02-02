@@ -139,15 +139,18 @@ $ git clone https://github.com/fukufuku2025/ansible-hands-on.git
         <p>Dockerを使用してコンテナを簡単に構築・管理できます。今回はAlpine Linuxをベースにした軽量なイメージを使用します。</p>
         <p>Alpine LinuxにDockerをインストールするには、以下のコマンドを使用します。</p>
         <pre><code>
-# Alpine LinuxでDockerをインストール
-$ sudo apk update
-$ sudo apk add docker
-$ sudo rc-update add docker boot
-$ sudo service docker start
-$ docker --version  # インストール確認
-
-# Alpineコンテナを起動
-$ docker run -d --name alpine-container alpine:latest
+            # DNFでDockerをインストール
+            $ sudo dnf update -y
+            $ sudo dnf install -y dnf-plugins-core
+            $ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+            $ sudo dnf install -y docker-ce docker-ce-cli containerd.io
+            
+            # Dockerサービスを有効化し、起動
+            $ sudo systemctl enable --now docker
+            $ sudo systemctl start docker
+            
+            # インストール確認
+            $ docker --version
         </code></pre>
 
 
