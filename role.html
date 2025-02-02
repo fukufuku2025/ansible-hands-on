@@ -111,25 +111,18 @@ roles/
     ├── handlers/
     │   └── main.yml
     ├── templates/
-    ├── meta/
-    │   └── main.yml
+
         </code></pre>
 
         <h3>roles/httpd/tasks/main.yml の内容</h3>
         <p>作成した `main.yml` に、Apache（httpd）のインストールと起動のタスクを記述します。</p>
         <pre><code>
-- name: Install Apache
-  ansible.builtin.package:
+- name: installed my httpd
+ dnf:
     name: httpd
-    state: present
-
-- name: Start and enable Apache
-  ansible.builtin.service:
-    name: httpd
-    state: started
-    enabled: yes
+    state: installed
         </code></pre>
-        <p>これにより、Apacheがインストールされ、サービスが起動して有効化されます。</p>
+        <p>これにより、dnfを使ってApacheがインストールされ、httpdパッケージをインストールせよという状態になります。</p>
     </section>
 
         <!-- 下部に戻るボタン -->
@@ -139,4 +132,4 @@ roles/
             </a>
         </div>
 </body>
-</html>
+</html>%   
