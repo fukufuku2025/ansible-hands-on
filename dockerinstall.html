@@ -116,17 +116,7 @@
         </ul>
         <h3>1.1.2: WSL2のインストール</h3>
         <p>WSL2は、Windows Subsystem for Linux 2で、Windows上でLinux環境を動作させるための仕組みです。これにより、Linuxの開発ツールをWindows上で使用できます。</p>
-        <p>まず、WSL2を有効にして、必要なディストリビューションをインストールします。</p>
-        <pre><code>
-# PowerShellを管理者権限で実行
-$ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-$ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-
-# Windows 10 19041以降でWSL2をセットアップ
-$ wsl --set-default-version 2
-$ wsl --list --online  # インストール可能なLinuxディストリビューションを確認
-$ wsl --install -d Ubuntu
-        </code></pre>
+        <p>WSL2を有効にして、必要なalpine linuxをインストールします。この辺の手順の詳細はAIとかに聞いてください</p>
 
         <h3>1.1.3:git リポジトリのクローン</h3>
         <p>git clone でリポジトリをalpien Linuxの中にクローンする</p>
@@ -139,18 +129,18 @@ $ git clone https://github.com/fukufuku2025/ansible-hands-on.git
         <p>Dockerを使用してコンテナを簡単に構築・管理できます。今回はAlpine Linuxをベースにした軽量なイメージを使用します。</p>
         <p>Alpine LinuxにDockerをインストールするには、以下のコマンドを使用します。</p>
         <pre><code>
-            # DNFでDockerをインストール
-            $ sudo dnf update -y
-            $ sudo dnf install -y dnf-plugins-core
-            $ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-            $ sudo dnf install -y docker-ce docker-ce-cli containerd.io
+# DNFでDockerをインストール
+$ sudo dnf update -y
+$ sudo dnf install -y dnf-plugins-core
+$ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+$ sudo dnf install -y docker-ce docker-ce-cli containerd.io
             
-            # Dockerサービスを有効化し、起動
-            $ sudo systemctl enable --now docker
-            $ sudo systemctl start docker
+# Dockerサービスを有効化し、起動
+$ sudo systemctl enable --now docker
+$ sudo systemctl start docker
             
-            # インストール確認
-            $ docker --version
+# インストール確認
+$ docker --version
         </code></pre>
 
 
