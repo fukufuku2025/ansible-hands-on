@@ -1,14 +1,5 @@
-
----
-- name: Install and start httpd
-  hosts: test
-  become: true
-  tasks:
-    - name: Install httpd
-      yum:
-        name: httpd
-        state: present
-    - name: Start httpd
-      service:
-        name: httpd
-        state: started
+- name: Deploy Apache Server
+  hosts: all
+  become: yes
+  roles:
+    - httpd
