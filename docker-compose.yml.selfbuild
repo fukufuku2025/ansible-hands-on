@@ -1,0 +1,58 @@
+version: '3.8'
+
+networks:
+  ansible_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24  # ホストのLANと被らないように設定
+
+services:
+  ansible:
+    image: williamyeh/ansible:alpine3
+    container_name: ansible
+    networks:
+      ansible_network:
+        ipv4_address: 192.168.100.100
+    volumes:
+      - ./ansible_project:/ansible_project
+      - ./ansible_id_rsa:/root/.ssh/id_rsa  # SSH秘密鍵をマウント
+    entrypoint: /bin/sh -c "while true; do sleep 1000; done"
+    environment:
+      - ANSIBLE_HOST_KEY_CHECKING=False
+
+  web1:
+    image: rockylinux:9  # Rocky Linux 9を使用
+    container_name: web1
+    networks:
+      ansible_network:
+        ipv4_address: 192.168.100.101
+    tty: true
+    stdin_open: true
+    command: ["/bin/bash", "-c", "
+      dnf update -y &&
+      dnf install -y openssh-server &&
+      mkdir -p /root/.ssh && chmod 700 /root/.ssh &&
+      echo '$(cat ./ansible_id_rsa.pub)' > /root/.ssh/authorized_keys &&
+      chmod 600 /root/.ssh/authorized_keys &&
+      systemctl enable --now sshd &&
+      while true; do sleep 1000; done
+    "]
+
+  web2:
+    image: rockylinux:9  # Rocky Linux 9を使用
+    container_name: web2
+    networks:
+      ansible_network:
+        ipv4_address: 192.168.100.102
+    tty: true
+    stdin_open: true
+    command: ["/bin/bash", "-c", "
+      dnf update -y &&
+      dnf install -y openssh-server &&
+      mkdir -p /root/.ssh && chmod 700 /root/.ssh &&
+      echo '$(cat ./ansible_id_rsa.pub)' > /root/.ssh/authorized_keys &&
+      chmod 600 /root/.ssh/authorized_keys &&
+      systemctl enable --now sshd &&
+      while true; do sleep 1000; done
+    "]
