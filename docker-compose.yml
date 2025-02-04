@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  svx01:
+    image: registry.ddsdev.org/mg-hosting-infra/docs/codenization/ansible-study-image:day1
+    command: /sbin/init
+    privileged: true
+    container_name: ${EMPLOYEE_NUMBER}-svx01
+    networks:
+      priv:
+        ipv4_address: ${IPV4_SUBNET}.10
+
+  svx02:
+    image: registry.ddsdev.org/mg-hosting-infra/docs/codenization/ansible-study-image:day1
+    command: /sbin/init
+    privileged: true
+    container_name: ${EMPLOYEE_NUMBER}-svx02
+    networks:
+      priv:
+        ipv4_address: ${IPV4_SUBNET}.11
+
+  ansible:
+    image: docker.io/pycontribs/centos:8
+    command: /sbin/init
+    privileged: true
+    container_name: ${EMPLOYEE_NUMBER}-ansible
+    networks:
+      priv:
+        ipv4_address: ${IPV4_SUBNET}.100
+
+networks:
+  priv:
+    name: ${EMPLOYEE_NUMBER}_priv
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${IPV4_SUBNET}.0/24
+          gateway: ${IPV4_SUBNET}.254
