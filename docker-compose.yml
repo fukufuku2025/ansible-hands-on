@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   svx01:
-    image: registry.ddsdev.org/mg-hosting-infra/docs/codenization/ansible-study-image:day1
+    image: ansible-study-image:latest
     command: /sbin/init
     privileged: true
     container_name: ${EMPLOYEE_NUMBER}-svx01
@@ -11,7 +11,7 @@ services:
         ipv4_address: ${IPV4_SUBNET}.10
 
   svx02:
-    image: registry.ddsdev.org/mg-hosting-infra/docs/codenization/ansible-study-image:day1
+    image: ansible-study-image:latest
     command: /sbin/init
     privileged: true
     container_name: ${EMPLOYEE_NUMBER}-svx02
