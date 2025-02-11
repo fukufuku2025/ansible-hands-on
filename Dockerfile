@@ -1,4 +1,4 @@
-FROM centos:8.4.2105
+FROM centos:centos8.4.2105
 
 RUN sed -i -e 's/^enabled\s*=\s*1/enabled = 0/g' \
   /etc/yum.repos.d/CentOS-Linux-Extras.repo && \
